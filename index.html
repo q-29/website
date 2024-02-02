@@ -26,7 +26,15 @@ document.addEventListener("keydown", (event) => {
   }
 
   if (event.keyCode === 81) {
-    strokeStyle = 'blue'
+    color = 'blue'
+    strokeStyle = color
+    drawCurrentColorText(color);
+  }
+
+  if (event.keyCode === 69) {
+    color = 'green'
+    strokeStyle = color
+    drawCurrentColorText(color);
   }
   // do something
 });
@@ -63,4 +71,12 @@ function draw(e) {
 
   ctx.stroke(); // draw it!
 }
+
+
+function drawCurrentColorText(color) {
+    ctx.font = "48px serif";
+    ctx.fillStyle = color
+    ctx.fillText(color, 10, 50);
+}
+
 </script>
