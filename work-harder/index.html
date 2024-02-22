@@ -1,8 +1,20 @@
 <div id="div">
 <script>
 const para = document.createElement("input")
-const node = document.createTextNode("input")
-para.appendChild(node);
+const b = document.createElement("br")
+const label = document.createElement("p")
+label.innerHTML = "Enter Text"
 const element = document.getElementById("div")
+
+function scoreInput(e) {
+    console.log(e.target.value.length)
+}
+
+
+para.addEventListener("input", scoreInput)
+
+
+element.appendChild(label)
+element.appendChild(b)
 element.appendChild(para);
 </script>
