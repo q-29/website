@@ -1,13 +1,25 @@
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+<p id="score">score = </p>
 <div id="div">
 <script>
+var score = 0
+document.getElementById("score").innerText = "score = "+score
 const para = document.createElement("input")
+para.setAttribute("onpaste", "return false")
 const b = document.createElement("br")
 const label = document.createElement("p")
-label.innerHTML = "Enter Text"
+label.innerHTML = "Enter Fifty Characters"
 const element = document.getElementById("div")
 
 function scoreInput(e) {
     console.log(e.target.value.length)
+    if (e.target.value.length >50) {
+        score+=1
+        document.getElementById("score").innerText = "score = "+score
+        e.target.value = ""
+    }
 }
 
 

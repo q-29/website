@@ -1,0 +1,11 @@
+#score {
+    font-size: 30px;
+    animation: color-change 1s infinite;
+}
+@keyframes color-change {
+    0% {color: #d51717}
+    25% {color: rgb(255, 196, 0)}
+    50% {color: rgb(81, 255, 0)}
+    75% {color: rgb(0, 217, 255)}
+    100% {color:#d517ac}
+}
