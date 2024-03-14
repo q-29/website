@@ -7,6 +7,15 @@
         function getRandomInt(max) {
             return Math.floor(Math.random() * max);
         }
+        function getRandomAlpheNumeric() {
+            const chars = "qwertyuiopasdfghjklzxcvbnm1234567890"
+            var value = ""
+            for (var i = 0; i < 12; i+=1) {
+                value += chars[getRandomInt(chars.length)]
+            }
+
+            return value
+        }
         var score = 0
         document.getElementById("score").innerText = "score = " + score
         const input = document.createElement("input")
@@ -16,15 +25,17 @@
         const element = document.getElementById("div")
         const sentences = ["14532", "76340", "15349"]
         var index = 0
+        var sentence = getRandomAlpheNumeric()
         console.log(sentences[1])
-        label.innerHTML = "Enter \"" + sentences[index] + "\""
+        label.innerHTML = "Enter \"" + sentence + "\""
         function scoreInput(e) {
             console.log(e.target.value.length)
-            if (e.target.value === sentences[index]
+            if (e.target.value === String(sentence)
             ) {
                 score += 1
                 index = getRandomInt(sentences.length)
-                label.innerHTML = "Enter \"" + sentences[index] + "\""
+                sentence = getRandomAlpheNumeric()
+                label.innerHTML = "Enter \"" + sentence + "\""
                 document.getElementById("score").innerText = "score = " + score
                 e.target.value = ""
             }
