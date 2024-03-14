@@ -1,32 +1,41 @@
 <head>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
 </head>
-<p id="score">score = </p>
+<p id="score">score =</p>
 <div id="div">
-<script>
-var score = 0
-document.getElementById("score").innerText = "score = "+score
-const para = document.createElement("input")
-para.setAttribute("onpaste", "return false")
-const b = document.createElement("br")
-const label = document.createElement("p")
-label.innerHTML = "Enter Fifty Characters"
-const element = document.getElementById("div")
+    <script>
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * max);
+        }
+        var score = 0
+        document.getElementById("score").innerText = "score = " + score
+        const input = document.createElement("input")
+        input.setAttribute("onpaste", "return false")
+        const b = document.createElement("br")
+        const label = document.createElement("p")
+        const element = document.getElementById("div")
+        const sentences = ["14532", "76340", "15349"]
+        var index = 0
+        console.log(sentences[1])
+        label.innerHTML = "Enter \"" + sentences[index] + "\""
+        function scoreInput(e) {
+            console.log(e.target.value.length)
+            if (e.target.value === sentences[index]
+            ) {
+                score += 1
+                index = getRandomInt(sentences.length)
+                label.innerHTML = "Enter \"" + sentences[index] + "\""
+                document.getElementById("score").innerText = "score = " + score
+                e.target.value = ""
+            }
+        }
 
-function scoreInput(e) {
-    console.log(e.target.value.length)
-    if (e.target.value.length >50) {
-        score+=1
-        document.getElementById("score").innerText = "score = "+score
-        e.target.value = ""
-    }
-}
+
+        input.addEventListener("input", scoreInput)
 
 
-para.addEventListener("input", scoreInput)
-
-
-element.appendChild(label)
-element.appendChild(b)
-element.appendChild(para);
-</script>
+        element.appendChild(label)
+        element.appendChild(b)
+        element.appendChild(input);
+    </script>
+</div>
