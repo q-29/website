@@ -8,9 +8,9 @@
             return Math.floor(Math.random() * max);
         }
         function getRandomAlpheNumeric() {
-            const chars = "qwertyuiopasdfghjklzxcvbnm1234567890"
+            const chars = "`~!@#$%^&*()_+-=\|][}{'\"/.,><:;QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjkzxcvbnm1234567890"
             var value = ""
-            for (var i = 0; i < 12; i+=1) {
+            for (var i = 0; i < 1; i += 1) {
                 value += chars[getRandomInt(chars.length)]
             }
 
@@ -38,6 +38,14 @@
                 label.innerHTML = "Enter \"" + sentence + "\""
                 document.getElementById("score").innerText = "score = " + score
                 e.target.value = ""
+            }
+            else {
+                score -= 1
+                document.getElementById("score").innerText = "score = " + score
+                e.target.value = ""
+                index = getRandomInt(sentences.length)
+                sentence = getRandomAlpheNumeric()
+                label.innerHTML = "Enter \"" + sentence + "\""
             }
         }
 
