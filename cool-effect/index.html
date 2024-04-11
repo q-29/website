@@ -1,0 +1,35 @@
+<head>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<div id="text"></div>
+
+<script>
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+}
+function getRandomAlpheNumeric() {
+    const chars = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjkzxcvbnm1234567890"
+    var value = ""
+    for (var i = 0; i < 1; i += 1) {
+        value += chars[getRandomInt(chars.length)]
+    }
+
+    return value
+}
+
+textTag = document.getElementById("text")
+
+
+// TODO: add color change to adjacent characters, not just the hovered one
+// TODO: make text constantly change
+// TODO: keep animation changing across characters - don't reset it when a new one is hovered
+
+for (var i = 1; i < 10000; i++) {
+    textTag.insertAdjacentHTML('afterbegin', '<span id="character">' + getRandomAlpheNumeric() + '</span>');
+    if (i % 200 == 0) {
+        textTag.insertAdjacentHTML('afterbegin', '<br>');
+    }
+}
+
+</script>
