@@ -34,7 +34,7 @@
 
     }
 
-    window.addEventListener('pointermove', onPointerMove);
+    window.addEventListener( 'pointermove', onPointerMove );
 
 
     // set up the scene
@@ -45,13 +45,13 @@
         antialias: true
     });
     renderer.setSize(innerWidth, innerHeight);
-    renderer.setClearColor("#000000");
+    renderer.setClearColor(0x404040);
     document.body.appendChild(renderer.domElement);
 
     const controls = new OrbitControls(camera, renderer.domElement);
 
 
-    let light = new THREE.DirectionalLight(0xffffff, 1)
+    let light = new THREE.DirectionalLight(0xffffff, 1);
     light.position.set(0.25, 0.5, 1);
     scene.add(light, new THREE.AmbientLight(0xffffff, 0.5));
 
@@ -60,7 +60,7 @@
     animate();
 
     const geometry = new THREE.BoxGeometry(10, 10, 10);
-    const meshMaterial = new THREE.MeshBasicMaterial({ wireframe: true, opacity: 0 })
+    const meshMaterial = new THREE.MeshBasicMaterial({ wireframe:true, opacity: 0})
     const surfaceMesh = new THREE.Mesh(geometry, meshMaterial);
 
     scene.add(surfaceMesh)
@@ -70,17 +70,17 @@
         .setWeightAttribute('color')
         .build();
 
-    const numPoints = 25000
-    const pointRadius = 1
+    const numPoints = 1000
+    const pointRadius = 2
 
     const instanced = new THREE.SphereGeometry(pointRadius);
-    const sampleMaterial = new THREE.MeshBasicMaterial({ color: "#ffffff" })
+    const sampleMaterial = new THREE.MeshBasicMaterial({ color: "#e8ba4f" })
     const mesh = new THREE.InstancedMesh(instanced, sampleMaterial, numPoints);
 
     const position = new THREE.Vector3();
     const matrix = new THREE.Matrix4();
 
-    const color = new THREE.Color();
+    const color = new THREE.Color();   
 
     // Sample randomly from the surface, creating an instance of the sample
     // geometry at each sample point.
@@ -92,11 +92,11 @@
 
         mesh.setMatrixAt(i, matrix);
 
-        mesh.setColorAt(i, color.set("#000000"));
+        mesh.setColorAt( i, color.setHex("#e8ba4f" ) );
 
     }
 
-
+ 
 
     scene.add(mesh);
 
@@ -110,6 +110,7 @@
             intersects.forEach(x => {
                 // console.log(x.point)
             })
+            
         }
 
         for (let i = 0; i < intersects.length; i++) {
@@ -118,13 +119,8 @@
                 console.log(intersects[i])
                 const instanceId = intersects[i].instanceId;
 
-                mesh.getColorAt(instanceId, color);
-
-                if (!color.equals("#e8ba4f")) {
-
-                    mesh.setColorAt(instanceId, color.set("#ffffff"));
-                    mesh.instanceColor.needsUpdate = true;
-                }
+                mesh.setColorAt( instanceId, color.setHex( Math.random() * 0xffffff ) );
+                mesh.instanceColor.needsUpdate = true;
             }
         }
 
