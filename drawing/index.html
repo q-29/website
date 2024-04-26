@@ -25,13 +25,21 @@ document.addEventListener("keydown", (event) => {
     return;
   }
 
-  if (event.keyCode === 81) {
+  if (event.keyCode === 66) {
     color = 'blue'
     strokeStyle = color
     drawCurrentColorText(color);
   }
 
-  if (event.keyCode === 69) {
+
+  if (event.keyCode === 82) {
+    color = 'red'
+    strokeStyle = color
+    drawCurrentColorText(color);
+  }
+
+
+  if (event.keyCode === 71) {
     color = 'green'
     strokeStyle = color
     drawCurrentColorText(color);
@@ -53,7 +61,7 @@ function resize() {
 
 
 
-document.addEventListener('key')
+// document.addEventListener('key')
 
 function draw(e) {
   // mouse left button must be pressed
@@ -75,8 +83,14 @@ function draw(e) {
 
 function drawCurrentColorText(color) {
     ctx.font = "48px serif";
+    ctx.fillStyle = "white";
+    ctx.beginPath();
+    ctx.rect(0,0, 150, 150)
+    ctx.fill();
+    ctx.beginPath();
     ctx.fillStyle = color
     ctx.fillText(color, 10, 50);
+    ctx.fill();
 }
 
 </script>
