@@ -1,36 +1,43 @@
 <head>
     <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:ital,wght@0,800;1,800&display=swap" rel="stylesheet">
 </head>
 
 <div id="text"></div>
 
 <script>
-function getRandomInt(max) {
-    return Math.floor(Math.random() * max);
-}
-function getRandomAlpheNumeric() {
-    const chars = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjkzxcvbnm1234567890"
-    var value = ""
-    for (var i = 0; i < 1; i += 1) {
-        value += chars[getRandomInt(chars.length)]
+    function getRandomInt(max) {
+        return Math.floor(Math.random() * max);
+    }
+    function getRandomAlpheNumeric() {
+        const chars = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm1234567890"
+        var value = ""
+        for (var i = 0; i < 1; i += 1) {
+            value += chars[getRandomInt(chars.length)]
+        }
+
+        return value
     }
 
-    return value
-}
-
-textTag = document.getElementById("text")
+    textTag = document.getElementById("text")
 
 
-// TODO: add color change to adjacent characters, not just the hovered one
-// TODO: make text constantly change
-// TODO: keep animation changing across characters - don't reset it when a new one is hovered
-// TODO: make impossible to highlight text
+    // TODO: add color change to adjacent characters, not just the hovered one
+    // TODO: make text constantly change
+    // TODO: keep animation changing across characters - don't reset it when a new one is hovered
 
-for (var i = 1; i < 10000; i++) {
-    textTag.insertAdjacentHTML('afterbegin', '<span id="character">' + getRandomAlpheNumeric() + '</span>');
-    if (i % 200 == 0) {
-        textTag.insertAdjacentHTML('afterbegin', '<br>');
+    for (var i = 0; i < 10000; i++) {
+        let character = '<span class="character">' + getRandomAlpheNumeric() + '</span>'
+        if (i % 100 == 0) {
+            textTag.insertAdjacentHTML('afterbegin','<span class="animated character">' + getRandomAlpheNumeric() + '</span>');
+        } else{
+            textTag.insertAdjacentHTML('afterbegin',character);
+        }
+
+        if (i % 200 == 0) {
+            textTag.insertAdjacentHTML('afterbegin', '<br>');
+        }
     }
-}
-
 </script>
